@@ -1,0 +1,3 @@
+version: datastores/v0.1
+name: The Little Bike Company
+data_plugin: loaders/target-postgres--matatika
