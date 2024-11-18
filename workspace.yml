@@ -2,7 +2,7 @@ version: workspaces/v0.1
 name: Little Bike Company Trade
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
-default_data_store: Warehouse
+default_data_store: The Little Bike Company
 dataset_paths:
 - analyze/datasets
 - .meltano/analyze/datasets
