@@ -4,10 +4,10 @@
   "namespace": "utility_sendgrid",
   "variant": "matatika",
   "label": "Sendgrid",
-  "docs": "https://www-localhost.matatika.com/data-details/sendgrid/",
+  "docs": "https://www.matatika.com/data-details/sendgrid/",
   "pip_url": "git+https://github.com/Matatika/utility-sendgrid.git",
   "description": "Sendgrid is a cloud-based email delivery platform that helps businesses send and manage their email campaigns.\n### Prerequisites\n- To Address(es): The To Address(es) are the email addresses of the recipients you want to send the email to. These can be obtained from your own database or by prompting the user to enter them.\n- From Address: The From Address is the email address that the email will be sent from. This can be obtained from your Sendgrid account settings or by prompting the user to enter it.\n- Title: The Title is the subject line of the email. This can be obtained from your own database or by prompting the user to enter it.\n- Body: The Body is the content of the email. This can be obtained from your own database or by prompting the user to enter it.\n- API Key: The API Key is a unique identifier that allows you to connect to the Sendgrid API. This can be obtained from your Sendgrid account settings.",
-  "logo_url": "http://localhost:8080/assets/images/utility/sendgrid.png",
+  "logo_url": "/assets/images/utility/sendgrid.png",
   "settings": [
     {
       "name": "to_addresses",
