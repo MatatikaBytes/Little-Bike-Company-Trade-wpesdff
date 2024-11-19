@@ -11,6 +11,13 @@ script: |-
     > $csv
 
   export SENDGRID_ATTACHMENTS=$csv
+
+  export SENDGRID_TO_ADDRESSES=$( \
+    curl -f $ENDPOINT_URL/workspaces/$WORKSPACE_ID/invitations \
+      -H "Authorization: Bearer $AUTH_TOKEN" \
+      | jq -r '[._embedded.invitations[] | select(.status == "ACCEPTED") | .email, "'"$SENDGRID_TO_ADDRESSES"'"] | join(",")'
+  )
+
   meltano invoke sendgrid
 data_components:
 - sendgrid
