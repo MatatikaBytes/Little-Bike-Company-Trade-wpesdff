@@ -1,6 +1,122 @@
 version: workspaces/v0.1
 name: Little Bike Company Trade
 app_properties:
+  DASHBOARD_CONTENT: |-
+    <style jsx='true'>{`
+      table {
+        width: 100%;
+        margin: 1em 0;
+      }
+      table th {
+        width: 0;
+        padding: 0.5em;
+      }
+      table td {
+        padding: 0.5em;
+        border: unset;
+      }
+      #dataset-link {
+        display: inline-block;
+        color: #3e37c2;
+      }
+      #dataset-link:hover {
+        text-decoration: underline;
+      }
+      table td ul {
+        margin: 0;
+      }
+      table tbody tr {
+        transition: background-color 0.1s ease-in-out;
+        vertical-align: top;
+      }
+      table tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+      table td p {
+        margin: 0;
+      }
+      .grey-border-right {border-right: 2px solid #D3D3D3}
+      .grey-box {
+        border: 1px solid #D3D3D3;
+        border-radius: 20px;
+        padding: 30px;
+        flex-direction: column;
+      }
+      .text-center {
+        text-align: center;
+        justify-content: center;
+      }
+      .chart-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .metric-width {
+        min-width: 275px;
+      }
+      .chart-div > div {max-width: 400px}
+      @media screen and (max-width: 1449px) {
+        .grey-border-right {
+          border-right: none;
+        }
+        .grey-box, .text-center, .chart-div {
+          display: block;
+          margin: auto;
+        }
+        .chart-div > div {
+          display: block;
+          margin: auto;
+          padding-top: 10px;
+        }
+      }
+      @media screen and (min-width: 1450px) {
+        .grey-box, .text-center, .chart-div {
+          display: flex;
+        }
+        .grey-border-right {
+          border-right: 2px solid #D3D3D3;
+        }
+      }
+    `}</style>
+    <div style={{'padding': '10px'}}>
+      <div style={{'display': 'flex', 'justifyContent': 'right'}}>
+        <DownloadResource path="trade-stock.csv" tooltip="Download trade stock" />
+      </div>
+      <DatasetData
+        alias="trade-stock"
+        render={(dataset, data) =>
+          <table>
+            <thead>
+              <tr>
+                <th>SKU code</th>
+                <th>Product title</th>
+                <th>Variant title</th>
+                <th>Sellable quantity</th>
+              </tr>
+            </thead>
+            {data.map((row, i) => 
+              <tbody key={i}>
+                <tr>
+                  <td>
+                    <code>{row['sku_code']}</code>
+                  </td>
+                  <td>{row['product_title']}</td>
+                  <td>{row['variant_title']}</td>
+                  <td style={{ color: Number(row['sellable_quantity']) ? 'unset' : 'red' }}>
+                    {row['sellable_quantity']}
+                  </td>
+                </tr>
+              </tbody>
+            )}
+          </table>
+        } />
+    </div>
+  HOME_PAGE: dashboard
+  APP_MENU_ITEMS: |-
+    [
+      {"name": "dashboard", "faIcon": "bicycle", "label": "Trade Stock"}
+    ]
+  DASHBOARD_PAGE_TITLE: Trade Stock
   WELCOME_DATASET_ALIAS: welcome
 default_data_store: The Little Bike Company
 dataset_paths:
