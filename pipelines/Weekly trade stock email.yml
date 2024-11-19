@@ -10,7 +10,7 @@ script: |-
     -H "Authorization: Bearer $AUTH_TOKEN" \
     > $csv
 
-  export SENDGRID_ATTATCHMENTS=$csv
+  export SENDGRID_ATTACHMENTS=$csv
   meltano invoke sendgrid
 data_components:
 - sendgrid
