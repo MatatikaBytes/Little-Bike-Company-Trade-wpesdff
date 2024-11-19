@@ -1,5 +1,5 @@
 version: pipelines/v0.1
-name: Weekly trade stock email
+name: Send trade stock email
 schedule: 0 0 9 * * MON
 timeout: 60
 max_retries: 0
