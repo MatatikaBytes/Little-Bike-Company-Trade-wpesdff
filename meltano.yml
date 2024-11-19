@@ -18,3 +18,7 @@ plugins:
   - name: files-dbt
     variant: matatika
     pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.2
+  utilities:
+  - name: sendgrid
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/utility-sendgrid.git
