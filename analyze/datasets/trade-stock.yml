@@ -132,6 +132,9 @@ query: |-
     'ABA018',
     'ABA024',
     'ABA027',
-    'ABA015'
+    'ABA015',
+    'GSQ008',
+    'GSQ009',
+    '100970-9010'
   )
   ORDER BY sku_code
