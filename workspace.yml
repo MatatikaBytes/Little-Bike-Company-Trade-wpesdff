@@ -81,7 +81,10 @@ app_properties:
     `}</style>
     <div style={{'padding': '10px'}}>
       <div style={{'display': 'flex', 'justifyContent': 'right'}}>
-        <DownloadResource path="trade-stock.csv" tooltip="Download trade stock" />
+        <div style={{'textAlign': 'center'}}>
+          <DownloadResource path="trade-stock.csv" tooltip="Download trade stock" />
+          Download
+        </div>
       </div>
       <DatasetData
         alias="trade-stock"
