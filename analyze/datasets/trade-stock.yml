@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: Veeqo
+source: LBC
 title: Export - trade stock
 description: |
   Export of available trade stock.
