@@ -1,6 +1,6 @@
 version: pipelines/v0.1
 name: Publish trade stock data as a CSV resource
-schedule: 0 0 * * * *
+schedule: 0 55 * * * *
 timeout: 60
 max_retries: 0
 script: |-
