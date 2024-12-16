@@ -8,10 +8,18 @@ script: |-
 
   apt-get update && apt-get install -y --no-install-recommends jq
 
-  csv=trade-stock.csv
+  dataset=trade-stock
+  csv=$dataset.csv
 
-  curl -f $ENDPOINT_URL/workspaces/$WORKSPACE_ID/resources/$csv \
+  data_href=$( \
+    curl -f $ENDPOINT_URL/workspaces/$WORKSPACE_ID/datasets/$dataset \
+      -H "Authorization: Bearer $AUTH_TOKEN" \
+      | jq -r ._links.data.href
+  )
+
+  curl -f $data_href \
     -H "Authorization: Bearer $AUTH_TOKEN" \
+    -H "Accept: text/csv" \
     > $csv
 
   export SENDGRID_ATTACHMENTS=$csv
