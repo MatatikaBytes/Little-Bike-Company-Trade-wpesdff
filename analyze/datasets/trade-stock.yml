@@ -13,11 +13,12 @@ query: |-
     , product_title
     , title variant_title
     , CASE
-      WHEN FLOOR(available_stock_level_at_all_warehouses / 2) < 2 THEN 0
-      ELSE FLOOR(available_stock_level_at_all_warehouses / 2)
+      WHEN FLOOR((warehouse->>'available_stock_level')::NUMERIC / 2) < 2 THEN 0
+      ELSE FLOOR((warehouse->>'available_stock_level')::NUMERIC / 2)
       END sellable_quantity
   FROM sellables
   LEFT JOIN product_property_specifics pps ON pps.product_id = product__id AND pps.product_property_name = 'Trade stock'
   LEFT JOIN variant_property_specifics vps ON vps.variant_id = sellables.id AND vps.product_property_name = 'Trade stock'
+  LEFT JOIN JSONB_ARRAY_ELEMENTS(stock_entries) warehouse ON warehouse->'warehouse'->>'name' = 'Shop and Rossway'
   WHERE COALESCE(vps.value, pps.value) = 'true'
   ORDER BY sku_code
